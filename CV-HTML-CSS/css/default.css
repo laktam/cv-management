@@ -27,6 +27,9 @@ body {
 #photo {
     border-radius: 10%;
     margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #full_name {
@@ -34,7 +37,7 @@ body {
     font-size: 28px;
 }
 
-#contact_container {
+.contact {
     display: flex;
     /* flex-wrap: wrap; */
     /* flex-direction: column; */
@@ -49,14 +52,15 @@ body {
 .icon {
     display: block;
     height: 20px;
+    margin-right: 8px;
 }
 
 #links .link {
     margin-bottom: 10px;
 }
 
-#languages_title {
-    font-size: 18px;
+.sidebar_subtitle {
+    font-size: 22px;
     margin-bottom: 10px;
 }
 
@@ -65,10 +69,10 @@ body {
 }
 
 .soft_skill {
-    margin: 2px;
+    margin: 4px;
     display: inline-block;
     color: #333;
-    padding: 10px;
+    padding: 7px;
     border-radius: 20px;
     background-color: #fff;
 }
