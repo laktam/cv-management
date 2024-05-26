@@ -97,7 +97,8 @@ let cv = {
 
 function main() {
     createSidebar(cv.profile, cv.languages, cv.softSkills)
-
+    createContent(cv.education, cv.technologySkills)
+    create
 }
 
 
@@ -156,6 +157,45 @@ function createSidebar(profile, languages, softSkills) {
 
     //
 
+}
+
+function createContent(education, technologySkills) {
+    //educations
+    const educationsDiv = document.getElementById("educations")
+    for (let ed of education) {
+        const educationDiv = createEducation(ed)
+        educationsDiv.appendChild(educationDiv)
+    }
+    // technologySkills
+    const technologySkillsDiv = document.getElementById("technologySkills")
+    for (let skill of technologySkills) {
+        const skillDiv = createSkill(skill)
+        technologySkillsDiv.appendChild(skillDiv)
+    }
+}
+
+function createSkill(skill) {
+    const div = createDiv_class_content("skill")
+    const skill_title = createDiv_class_content("skill_title", skill.skill)
+    let details = ""
+    for (let detail of skill.details) {
+        details += detail
+        details += " "
+    }
+    const detailsDiv = createDiv_class_content("details", details)
+    div.append(skill_title, detailsDiv)
+    return div
+
+}
+
+function createEducation(education) {
+    const div = document.createElement("div")
+    div.className = "education"
+    diploma = createDiv_class_content("diploma", education.diploma)
+    organisation = createDiv_class_content("", education.organisation)
+    year = createDiv_class_content("diploma_year", education.year)
+    div.append(diploma, organisation, year)
+    return div
 }
 
 function createDiv_id_content(id, content) {
