@@ -231,10 +231,16 @@ function createPorject(project) {
 
     //
     let technologies = ""
-    for (let technologie of project.technologies) {
-        technologies += technologie
-        technologies += " "
+    for (let i = 0; i < project.technologies.length; i++) {
+        technologies += project.technologies[i]
+        if (i != project.technologies.length - 1) {
+            technologies += ", "
+        }
     }
+    // for (let technologie of project.technologies) {
+    //     technologies += technologie
+    //     technologies += " "
+    // }
     const technologiesDiv = createDiv_class_content("", technologies)
     //
     const time = " (" + project.duration + ", " + project.year + ")"
@@ -253,10 +259,17 @@ function createExperience(experience) {
     const organisationDiv = createDiv_class_content("organisation", organisation)
     const projectDiv = createDiv_class_content("project_title", experience.title)
     let technologies = ""
-    for (let technologie of experience.technologies) {
-        technologies += technologie
-        technologies += " "
+
+    for (let i = 0; i < experience.technologies.length; i++) {
+        technologies += experience.technologies[i]
+        if (i != experience.technologies.length - 1) {
+            technologies += ", "
+        }
     }
+    // for (let technologie of experience.technologies) {
+    //     technologies += technologie
+    //     technologies += " "
+    // }
     const technologiesDiv = createDiv_class_content("technologies", technologies)
     div.append(organisationDiv, projectDiv, technologiesDiv)
     return div
@@ -266,10 +279,16 @@ function createSkill(skill) {
     const div = createDiv_class_content("skill")
     const skill_title = createDiv_class_content("skill_title", skill.skill)
     let details = ""
-    for (let detail of skill.details) {
-        details += detail
-        details += " "
+    for (let i = 0; i < skill.details.length; i++) {
+        details += skill.details[i]
+        if (i != skill.details.length - 1) {
+            details += ", "
+        }
     }
+    // for (let detail of skill.details) {
+    //     details += detail
+    //     details += " "
+    // }
     const detailsDiv = createDiv_class_content("details", details)
     div.append(skill_title, detailsDiv)
     return div
