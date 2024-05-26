@@ -26,11 +26,20 @@ let cv = {
         {
             diploma: "Master MQL",
             organisation: "FSDM - Université Sidi Mohammed ben Abdellah - Fès",
+            year: 2023
+        },
+        {
+            diploma: "Licence Professionnelle GLAASRI",
+            organisation: "ÉCOLE SUPÉRIEURE DE TECHNOLOGIE CASA",
             year: 2022
         },
         {
+            diploma: "Baccalauréat physique chimie",
+            organisation: "Lycée Moulay Abdellah",
+            year: 2018
+        },
 
-        }
+
     ],
     technologySkills: [
         {
@@ -58,18 +67,50 @@ let cv = {
     experiences: [
         {
             type: "Stage",
-            organisation: "CGI - Fès",
-            title: "",
-            technologies: ["Spring Boot", "React", "Node.js"],
+            organisation: "4Digital - Tanger",
+            title: "PFE: développement d'une webapp d'ecomerce",
+            technologies: ["React", "NestJS", "Node.js", "TypeScript", "Material UI", "Docker", "MySQL", "Swagger"],
             year: 2023,
-            duration: "4 mois"
+            duration: "1 mois"
         },
         {
             type: "Projet",
-            organisation: "FSDM",
-            title: "Réalisation d'une application de Gestion de CVs",
+            organisation: "ESTC",
+            title: "Extension de prise de note sur les tabs de navigateur",
             technologies: ["HTML", "CSS", "JavaScript"],
-            year: 2023,
+            year: 2022,
+            duration: "1 mois"
+        },
+        {
+            type: "Projet",
+            organisation: "ESTC",
+            title: " Online tic-tac-toe",
+            technologies: ["React", "ExpressJS", "HTML", "CSS"],
+            year: 2022,
+            duration: "1 mois"
+        },
+        {
+            type: "Projet",
+            organisation: "ESTC",
+            title: " Site web de l'ESTC",
+            technologies: ["Django", "HTML", "CSS"],
+            year: 2022,
+            duration: "1 mois"
+        },
+        {
+            type: "Projet",
+            organisation: "ESTC",
+            title: "Application android qui utilise 3 algorithme (knn, Reseau Bayesien,Arbre de decision)",
+            technologies: ["Java"],
+            year: 2022,
+            duration: "1 mois"
+        },
+        {
+            type: "Projet",
+            organisation: "ESTC",
+            title: "Application desktop de gestion des contacts (GUI)",
+            technologies: ["Java Swing", "JDBC"],
+            year: 2022,
             duration: "1 mois"
         }
     ],
@@ -97,8 +138,7 @@ let cv = {
 
 function main() {
     createSidebar(cv.profile, cv.languages, cv.softSkills)
-    createContent(cv.education, cv.technologySkills)
-    create
+    createContent(cv.education, cv.technologySkills, cv.experiences)
 }
 
 
@@ -159,7 +199,7 @@ function createSidebar(profile, languages, softSkills) {
 
 }
 
-function createContent(education, technologySkills) {
+function createContent(education, technologySkills, experiences) {
     //educations
     const educationsDiv = document.getElementById("educations")
     for (let ed of education) {
@@ -172,6 +212,54 @@ function createContent(education, technologySkills) {
         const skillDiv = createSkill(skill)
         technologySkillsDiv.appendChild(skillDiv)
     }
+    // experiences
+    const experiencesDiv = document.getElementById("experiences")
+    const projectsDiv = document.getElementById("projects")
+    for (let experience of experiences) {
+        if (experience.type == "Stage") {
+            const experienceDiv = createExperience(experience)
+            projectsDiv.before(experienceDiv)
+        } else if (experience.type == "Projet") {
+            const projectDiv = createPorject(experience)
+            projectsDiv.appendChild(projectDiv)
+        }
+    }
+}
+
+function createPorject(project) {
+    const div = createDiv_class_content("project")
+
+    //
+    let technologies = ""
+    for (let technologie of project.technologies) {
+        technologies += technologie
+        technologies += " "
+    }
+    const technologiesDiv = createDiv_class_content("", technologies)
+    //
+    const time = " (" + project.duration + ", " + project.year + ")"
+    // const timeDiv = createDiv_class_content("", time)
+    const projectDiv = createDiv_class_content("", project.title + " " + time)
+    div.append(projectDiv, technologiesDiv)
+    return div
+}
+
+
+function createExperience(experience) {
+    const div = createDiv_class_content("experience")
+    // organisation = type + org + (duree, year)
+    // org = org  + place
+    const organisation = experience.type + " à " + experience.organisation + " (" + experience.duration + ", " + experience.year + ")"
+    const organisationDiv = createDiv_class_content("organisation", organisation)
+    const projectDiv = createDiv_class_content("project_title", experience.title)
+    let technologies = ""
+    for (let technologie of experience.technologies) {
+        technologies += technologie
+        technologies += " "
+    }
+    const technologiesDiv = createDiv_class_content("technologies", technologies)
+    div.append(organisationDiv, projectDiv, technologiesDiv)
+    return div
 }
 
 function createSkill(skill) {
