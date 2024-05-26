@@ -100,11 +100,15 @@ body {
 
 .diploma_year,
 .details,
-.projet,
+/* .projet, */
 .technologies,
 .project {
     margin-left: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 13px;
+}
+
+.project_title {
+    margin-left: 20px;
 }
 
 .sub_title {
@@ -113,3 +117,7 @@ body {
     margin-top: 20px;
     margin-bottom: 10px;
 }
+
+/* .project {
+    margin-bottom: 13px;
+} */

@@ -93,3 +93,7 @@ body {
 .technologies {
     font-style: italic;
 }
+
+.project {
+    margin-bottom: 13px;
+}
