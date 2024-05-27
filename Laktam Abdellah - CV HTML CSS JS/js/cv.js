@@ -26,11 +26,11 @@ let cv = {
         {
             diploma: "Master MQL",
             organisation: "FSDM - Université Sidi Mohammed ben Abdellah - Fès",
-            year: 2023
+            year: 2025
         },
         {
             diploma: "Licence Professionnelle GLAASRI",
-            organisation: "ÉCOLE SUPÉRIEURE DE TECHNOLOGIE CASA",
+            organisation: "École SUPÉRIEURE DE TECHNOLOGIE CASA",
             year: 2022
         },
         {
@@ -114,21 +114,27 @@ let cv = {
             duration: "1 mois"
         }
     ],
-    softSkills: ["Communication", "Esprit d'équipe", "Intelligence Emotionnelle", "Empatie et Ecoute",
-        "Créativité", "Capacité de Résolution de problèmes", "Adaptabilité", "Gestion du Temps",
-        "Rigueur", "Organisation", "Gestion du Stress", "Présence"
+    softSkills: ["Communication", "Esprit d'équipe", "Empatie et Ecoute",
+        "Capacité de Résolution de problèmes", "Adaptabilité", "Gestion du Temps",
+        "Gestion du Stress", "Présence"
     ],
     languages: [
         {
             language: "Français",
-            level: "A1|A2|B1|B2|C1|C2", // voir le "Common European Framework of Reference for Languages" (CEFR)
-            certification: "DELF|DALF|TCF|TEF",
+            level: "", // voir le "Common European Framework of Reference for Languages" (CEFR)
+            certification: "",
             experience: ""
         },
         {
-            language: "Français",
-            level: "A1|A2|B1|B2|C1|C2",
-            certification: "TOEFL|TOEIC|...",
+            language: "Anglais",
+            level: "",
+            certification: "",
+            experience: ""
+        },
+        {
+            language: "Arabe",
+            level: "",
+            certification: "",
             experience: ""
         }
     ],
@@ -138,14 +144,8 @@ let cv = {
 
 function main() {
     createSidebar(cv.profile, cv.languages, cv.softSkills)
-    createContent(cv.education, cv.technologySkills, cv.experiences)
+    createContent(cv.profile.professionalSummary, cv.education, cv.technologySkills, cv.experiences)
 }
-
-
-
-
-
-
 
 
 
@@ -199,7 +199,10 @@ function createSidebar(profile, languages, softSkills) {
 
 }
 
-function createContent(education, technologySkills, experiences) {
+function createContent(professionalSummary, education, technologySkills, experiences) {
+    //professionalSummary
+    const professionalSummaryDiv = document.getElementById("professionalSummary")
+    professionalSummaryDiv.textContent = professionalSummary
     //educations
     const educationsDiv = document.getElementById("educations")
     for (let ed of education) {
@@ -249,7 +252,6 @@ function createPorject(project) {
     div.append(projectDiv, technologiesDiv)
     return div
 }
-
 
 function createExperience(experience) {
     const div = createDiv_class_content("experience")
