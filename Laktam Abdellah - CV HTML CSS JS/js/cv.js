@@ -12,14 +12,12 @@ let cv = {
         phone: "0663573878",
         email: "laktamlaktamabdellah@gmail.com",
         address: "Rabat",
-        professionalSummary: `Ingénieur en informatique avec une bonne expérience 
-            sur les architectures logicielles et les nouvelles technologies informatique, 
-            en l'occurence Jakarta EE, Spring Boot, React et Angular. 
-            Expérimenté dans la gestion de projets agiles, planification, exécution et coordination des tâches 
-            avec des équipes multifonctionnelles. Disposant des compétences requises en communication et 
-            en résolution de problèmes avec un esprit ouvert en collaboration efficace avec les parties prenantes 
-            et les membres de l'équipe.
-        `,
+        professionalSummary: `  Étudiant passionné et motivé, actuellement en Master Qualite du Logiciel (MQL) à la faculté des sciences Dhar El Mahraz , avec 
+        une solide compréhension des architectures logicielles et les nouvelles technologies informatique, 
+        en l'occurence Jakarta EE, Spring Boot, React et Angular. Disposant des compétences requises en communication et 
+        en résolution de problèmes avec un esprit ouvert en collaboration efficace avec les parties prenantes 
+        et les membres de l'équipe.`
+        ,
         links: ["github.com/laktam", "", ""],
     },
     education: [
