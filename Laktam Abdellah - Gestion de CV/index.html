@@ -7,16 +7,23 @@
     <link rel="stylesheet" href="./css/style1.css">
     <script src="js/database.js"></script>
     <script src="js/cv.js"></script>
+    <script src="js/search.js"></script>
     <title>Document</title>
 </head>
 
 <body onload="main()" onkeyup="changeCV(event)">
     <div id="header">
-        <label for="selectCV">Display type:</label>
-        <select name="selectCV" id="selectCV" onchange="onDisplayTypeChange()">
-            <option value="all">Show all</option>
-            <option value="one">One by one</option>
-        </select>
+        <div>
+            <label for="selectCV">Display type:</label>
+            <select name="selectCV" id="selectCV" onchange="onDisplayTypeChange()">
+                <option value="all">Show all</option>
+                <option value="one">One by one</option>
+            </select>
+        </div>
+        <div id="search">
+            <input type="text" id="searchInput" onkeyup="search()"/>
+            <button>search</button>
+        </div>
     </div>
     <div id="container">
 

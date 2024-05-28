@@ -8,6 +8,10 @@ body {
 
 #header {
     margin: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
 }
 
 
@@ -107,16 +111,15 @@ body {
 #controllers {
     display: flex;
     justify-content: space-around;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 20px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background-color: #f4f4f4;
+    /* background-color: #2c3e50; */
+    /* border-radius: 25px; */
 }
 
 #firstButton,
 #lastButton {
     margin: 0 10px;
+}
+
+button {
+    padding: 5px;
 }

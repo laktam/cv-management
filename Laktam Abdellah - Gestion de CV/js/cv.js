@@ -3,6 +3,7 @@
 // change container margin to 15
 // add controllers css
 // add bottom paddins in body to acount for controllers
+// add buttons style
 
 let current_cv = 0;
 
@@ -54,6 +55,7 @@ function clearControllers() {
 
 function addControllers() {
     const controllersDiv = createDiv_id_content("controllers")
+    // const controllersDiv = document.getElementById("controllers");
     const leftButton = document.createElement("button")
     leftButton.textContent = "previous"
     const centerButtonsDiv = document.createElement("div")
@@ -67,7 +69,7 @@ function addControllers() {
     lastButton.textContent = "show last"
     centerButtonsDiv.append(firstButton, lastButton)
     controllersDiv.append(leftButton, centerButtonsDiv, rightButton)
-    document.body.appendChild(controllersDiv)
+    document.getElementById("search").before(controllersDiv)
 
     // eventhandling
     leftButton.addEventListener("click", () => {
