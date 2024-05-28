@@ -1,6 +1,8 @@
 // in other css files : 
 // change container from id to class
 // change container margin to 15
+// add controllers css
+// add bottom paddins in body to acount for controllers
 
 let current_cv = 0;
 
@@ -36,12 +38,36 @@ function onDisplayTypeChange() {
     const selectCV = document.getElementById("selectCV")
     const options = selectCV.options
     console.log(options.selectedIndex)
-    if (options.selectedIndex == 0) {
+    if (options.selectedIndex == 0) {//show all
         displayAll()
-    } else {
+        clearControllers()
+    } else { // show one by one
         clean()
         displayCV(database[current_cv])
+        addControllers()
     }
+}
+
+function clearControllers() {
+    document.getElementById("controllers").remove()
+}
+
+function addControllers() {
+    const controllersDiv = createDiv_id_content("controllers")
+    const leftButton = document.createElement("button")
+    leftButton.textContent = "previous"
+    const centerButtonsDiv = document.createElement("div")
+    const rightButton = document.createElement("button")
+    rightButton.textContent = "next"
+    const firstButton = document.createElement("button")
+    firstButton.id = "firstButton"
+    firstButton.textContent = "show first"
+    const lastButton = document.createElement("button")
+    lastButton.id = "lastButton"
+    lastButton.textContent = "show last"
+    centerButtonsDiv.append(firstButton, lastButton)
+    controllersDiv.append(leftButton, centerButtonsDiv, rightButton)
+    document.body.appendChild(controllersDiv)
 }
 
 function displayAll() {

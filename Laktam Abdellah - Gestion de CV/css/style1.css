@@ -3,6 +3,7 @@ body {
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
+    padding-bottom: 40px;
 }
 
 #header {
@@ -101,4 +102,21 @@ body {
 
 .project {
     margin-bottom: 13px;
+}
+
+#controllers {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #f4f4f4;
+}
+
+#firstButton,
+#lastButton {
+    margin: 0 10px;
 }
