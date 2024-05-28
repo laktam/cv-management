@@ -2,10 +2,15 @@ let current_cv = 0;
 function changeCV(event) {
     if (event.keyCode == 39 && current_cv < (database.length - 1)) {
         current_cv++;
+        clean();
         displayCV(database[current_cv])
     } else if (event.keyCode == 37 && current_cv > 0) {
         current_cv--;
+        clean();
         displayCV(database[current_cv])
+    } else if (event.keyCode == 38) {
+        clean();
+        current_cv = -1;
     }
 }
 
@@ -20,10 +25,29 @@ function displayCV(cv) {
     createContent(cv.profile.professionalSummary, cv.education, cv.technologySkills, cv.experiences)
 }
 
+function clean() {
+    const content_divs = document.querySelectorAll('#info, #contact_container, #languages, #softSkills, #professionalSummary, #educations, #technologySkills, #experiences, #projects');
+    for (let element of content_divs) {
+        element.textContent = '';
+    }
+    // delete image
+    const img = document.getElementsByTagName("img")
+    // document.removeChild(img[0])
+    if (img.length > 0)
+        img[0].parentElement.removeChild(img[0])
+    //delete titles
+    const titles = document.querySelectorAll('.title, .sub_title');
+    for (let title of titles) {
+        document.removeChild(title)
+    }
+
+}
+
 function createSidebar(profile, languages, softSkills) {
     //info div
     const sidebar = document.getElementById("sidebar")
-    const infoDiv = document.createElement("div")
+    // const infoDiv = document.createElement("div")
+    const infoDiv = createDiv_id_content("info")
     const full_name = createDiv_id_content("full_name", profile.firstName + " " + profile.lastName)
     infoDiv.appendChild(full_name)
 
@@ -93,9 +117,12 @@ function createContent(professionalSummary, education, technologySkills, experie
     // experiences
     const experiencesDiv = document.getElementById("experiences")
     const experiencesTitleDiv = createDiv_class_content("titre", "Experience")
-    experiencesDiv.appendChild(experiencesTitleDiv)
+    experiencesDiv.prepend(experiencesTitleDiv)
+
     //projects
-    const projectsDiv = document.getElementById("projects")
+    // const projectsDiv = document.getElementById("projects")
+    const projectsDiv = createDiv_id_content("projects")
+    experiencesDiv.appendChild(projectsDiv)
     const projectsTitleDiv = createDiv_class_content("sub_title", "Projets")
     projectsDiv.appendChild(projectsTitleDiv)
     for (let experience of experiences) {
