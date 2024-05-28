@@ -68,6 +68,35 @@ function addControllers() {
     centerButtonsDiv.append(firstButton, lastButton)
     controllersDiv.append(leftButton, centerButtonsDiv, rightButton)
     document.body.appendChild(controllersDiv)
+
+    // eventhandling
+    leftButton.addEventListener("click", () => {
+        if (current_cv > 0) {
+            current_cv--;
+            clean();
+            displayCV(database[current_cv])
+        }
+    })
+
+    rightButton.addEventListener("click", () => {
+        if (current_cv < (database.length - 1)) {
+            current_cv++;
+            clean();
+            displayCV(database[current_cv])
+        }
+    })
+
+    firstButton.addEventListener("click", () => {
+        current_cv = 0;
+        clean();
+        displayCV(database[current_cv])
+    })
+
+    lastButton.addEventListener("click", () => {
+        current_cv = database.length - 1;
+        clean();
+        displayCV(database[current_cv])
+    })
 }
 
 function displayAll() {
