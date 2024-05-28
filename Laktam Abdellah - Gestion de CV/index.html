@@ -12,36 +12,17 @@
 </head>
 
 <body onload="main()" onkeyup="changeCV(event)">
-    <div id="container">
-        <div id="sidebar">
-            <div id="contact_container">
-            </div>
-            <div id="languages">
-            </div>
-            <div id="softSkills">
-            </div>
-        </div>
-
-        <div id="content">
-            <div id="professionalSummary">
-            </div>
-            <div id="educations">
-                <!-- <div class="titre">Education</div> -->
-            </div>
-
-            <div id="technologySkills">
-                <!-- <div class="titre">Competences</div> -->
-            </div>
-            <div id="experiences">
-                <!-- <div class="titre">Experience</div> -->
-                <!-- projects -->
-                <div id="projects">
-                    <!-- <div class="sub_title">Projets</div> -->
-                </div>
-            </div>
-        </div>
+    <div id="header">
+        <label for="selectCV">Display type:</label>
+        <select name="selectCV" id="selectCV" onchange="onDisplayTypeChange()">
+            <option value="all">Show all</option>
+            <option value="one">One by one</option>
+        </select>
     </div>
-    </body>
+    <div id="container">
+
+    </div>
+</body>
 
 </html>
 

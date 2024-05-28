@@ -1,4 +1,9 @@
+// in other css files : 
+// change container from id to class
+// change container margin to 15
+
 let current_cv = 0;
+
 function changeCV(event) {
     if (event.keyCode == 39 && current_cv < (database.length - 1)) {
         current_cv++;
@@ -17,36 +22,54 @@ function changeCV(event) {
 
 function main() {
     console.log(database.length)
-    displayCV(database[0])
+    const selectCV = document.getElementById("selectCV")
+    const options = selectCV.options
+    console.log(options.selectedIndex)
+    if (options.selectedIndex == 0) {
+        displayAll()
+    } else {
+        displayCV(database[current_cv])
+    }
+}
+
+function onDisplayTypeChange() {
+    const selectCV = document.getElementById("selectCV")
+    const options = selectCV.options
+    console.log(options.selectedIndex)
+    if (options.selectedIndex == 0) {
+        displayAll()
+    } else {
+        clean()
+        displayCV(database[current_cv])
+    }
+}
+
+function displayAll() {
+    clean()
+    for (let cv of database) {
+        displayCV(cv)
+    }
 }
 
 function displayCV(cv) {
-    createSidebar(cv.profile, cv.languages, cv.softSkills)
-    createContent(cv.profile.professionalSummary, cv.education, cv.technologySkills, cv.experiences)
+    const container = createDiv_class_content("container")
+    document.body.appendChild(container)
+    createSidebar(cv.profile, cv.languages, cv.softSkills, container)
+    createContent(cv.profile.professionalSummary, cv.education, cv.technologySkills, cv.experiences, container)
 }
 
 function clean() {
-    const content_divs = document.querySelectorAll('#info, #contact_container, #languages, #softSkills, #professionalSummary, #educations, #technologySkills, #experiences, #projects');
-    for (let element of content_divs) {
-        element.textContent = '';
+    const containers = document.querySelectorAll(".container")
+    for (let container of containers) {
+        container.remove()
     }
-    // delete image
-    const img = document.getElementsByTagName("img")
-    // document.removeChild(img[0])
-    if (img.length > 0)
-        img[0].parentElement.removeChild(img[0])
-    //delete titles
-    const titles = document.querySelectorAll('.title, .sub_title');
-    for (let title of titles) {
-        document.removeChild(title)
-    }
-
 }
 
-function createSidebar(profile, languages, softSkills) {
+function createSidebar(profile, languages, softSkills, container) {
     //info div
-    const sidebar = document.getElementById("sidebar")
-    // const infoDiv = document.createElement("div")
+    // const sidebar = document.getElementById("sidebar")
+    const sidebar = createDiv_id_content("sidebar")
+    container.appendChild(sidebar)
     const infoDiv = createDiv_id_content("info")
     const full_name = createDiv_id_content("full_name", profile.firstName + " " + profile.lastName)
     infoDiv.appendChild(full_name)
@@ -65,18 +88,22 @@ function createSidebar(profile, languages, softSkills) {
     sidebar.prepend(img)
 
     //contact_container
-    const contact_container = document.getElementById("contact_container")
+    // const contact_container = document.getElementById("contact_container")
+    const contact_container = createDiv_id_content("contact_container")
     const phone = createDiv_id_content("phone", profile.phone)
     const email = createDiv_id_content("email", profile.email)
     const link = createDiv_id_content("link", profile.link)
     contact_container.append(phone, email, link)
+    sidebar.appendChild(contact_container)
     // links
     for (let link of profile.links) {
         const div = createDiv_class_content("link", link)
         contact_container.appendChild(div)
     }
     // languages
-    const languagesDiv = document.getElementById("languages")
+    // const languagesDiv = document.getElementById("languages")
+    const languagesDiv = createDiv_id_content("languages")
+    sidebar.appendChild(languagesDiv)
     languagesDiv.appendChild(createDiv_class_content("sidebar_subtitle", "Langues"))
     for (let language of languages) {
         const div = document.createElement("div")
@@ -84,7 +111,9 @@ function createSidebar(profile, languages, softSkills) {
         languagesDiv.appendChild(div)
     }
     // softskills
-    const softSkillsDiv = document.getElementById("softSkills")
+    // const softSkillsDiv = document.getElementById("softSkills")
+    const softSkillsDiv = createDiv_id_content("softSkills")
+    sidebar.appendChild(softSkillsDiv)
     softSkillsDiv.appendChild(createDiv_class_content("sidebar_subtitle", "Soft Skills :"))
     for (let softSkill of softSkills) {
         softSkillsDiv.appendChild(createDiv_class_content("soft_skill", softSkill))
@@ -94,12 +123,18 @@ function createSidebar(profile, languages, softSkills) {
 
 }
 
-function createContent(professionalSummary, education, technologySkills, experiences) {
+function createContent(professionalSummary, education, technologySkills, experiences, container) {
+    // content div
+    const content_div = createDiv_id_content("content")
+    container.appendChild(content_div)
     //professionalSummary
-    const professionalSummaryDiv = document.getElementById("professionalSummary")
-    professionalSummaryDiv.textContent = professionalSummary
+    // const professionalSummaryDiv = document.getElementById("professionalSummary")
+    const professionalSummaryDiv = createDiv_id_content("professionalSummary", professionalSummary)
+    content_div.appendChild(professionalSummaryDiv)
     //educations
-    const educationsDiv = document.getElementById("educations")
+    // const educationsDiv = document.getElementById("educations")
+    const educationsDiv = createDiv_id_content("educations")
+    content_div.appendChild(educationsDiv)
     const educationTitleDiv = createDiv_class_content("titre", "Education")
     educationsDiv.appendChild(educationTitleDiv)
     for (let ed of education) {
@@ -107,7 +142,9 @@ function createContent(professionalSummary, education, technologySkills, experie
         educationsDiv.appendChild(educationDiv)
     }
     // technologySkills
-    const technologySkillsDiv = document.getElementById("technologySkills")
+    // const technologySkillsDiv = document.getElementById("technologySkills")
+    const technologySkillsDiv = createDiv_id_content("technologySkills")
+    content_div.appendChild(technologySkillsDiv)
     const technologiesTitleDiv = createDiv_class_content("titre", "Competences")
     technologySkillsDiv.appendChild(technologiesTitleDiv)
     for (let skill of technologySkills) {
@@ -115,7 +152,9 @@ function createContent(professionalSummary, education, technologySkills, experie
         technologySkillsDiv.appendChild(skillDiv)
     }
     // experiences
-    const experiencesDiv = document.getElementById("experiences")
+    // const experiencesDiv = document.getElementById("experiences")
+    const experiencesDiv = createDiv_id_content("experiences")
+    content_div.appendChild(experiencesDiv)
     const experiencesTitleDiv = createDiv_class_content("titre", "Experience")
     experiencesDiv.prepend(experiencesTitleDiv)
 
