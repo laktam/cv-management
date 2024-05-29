@@ -11,7 +11,8 @@
     <title>Document</title>
 </head>
 
-<body onload="main()" onkeyup="changeCV(event)">
+<body onload="main()">
+    <!-- onkeyup="changeCV(event)" -->
     <div id="header">
         <div>
             <label for="selectCV">Display type:</label>
@@ -21,7 +22,7 @@
             </select>
         </div>
         <div id="search">
-            <input type="text" id="searchInput" onkeyup="search()"/>
+            <input type="text" id="searchInput" onkeyup="search()" />
             <button>search</button>
         </div>
     </div>

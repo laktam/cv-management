@@ -7,20 +7,20 @@
 
 let current_cv = 0;
 
-function changeCV(event) {
-    if (event.keyCode == 39 && current_cv < (database.length - 1)) {
-        current_cv++;
-        clean();
-        displayCV(database[current_cv])
-    } else if (event.keyCode == 37 && current_cv > 0) {
-        current_cv--;
-        clean();
-        displayCV(database[current_cv])
-    } else if (event.keyCode == 38) {
-        clean();
-        current_cv = -1;
-    }
-}
+// function changeCV(event) {
+//     if (event.keyCode == 39 && current_cv < (database.length - 1)) {
+//         current_cv++;
+//         clean();
+//         displayCV(database[current_cv])
+//     } else if (event.keyCode == 37 && current_cv > 0) {
+//         current_cv--;
+//         clean();
+//         displayCV(database[current_cv])
+//     } else if (event.keyCode == 38) {
+//         clean();
+//         current_cv = -1;
+//     }
+// }
 
 
 function main() {
@@ -36,6 +36,7 @@ function main() {
 }
 
 function onDisplayTypeChange() {
+    deleteOldSearchResults()
     const selectCV = document.getElementById("selectCV")
     const options = selectCV.options
     console.log(options.selectedIndex)
@@ -50,55 +51,59 @@ function onDisplayTypeChange() {
 }
 
 function clearControllers() {
-    document.getElementById("controllers").remove()
+    if (document.getElementById("controllers") != null)
+        document.getElementById("controllers").remove()
 }
 
 function addControllers() {
-    const controllersDiv = createDiv_id_content("controllers")
-    // const controllersDiv = document.getElementById("controllers");
-    const leftButton = document.createElement("button")
-    leftButton.textContent = "previous"
-    const centerButtonsDiv = document.createElement("div")
-    const rightButton = document.createElement("button")
-    rightButton.textContent = "next"
-    const firstButton = document.createElement("button")
-    firstButton.id = "firstButton"
-    firstButton.textContent = "show first"
-    const lastButton = document.createElement("button")
-    lastButton.id = "lastButton"
-    lastButton.textContent = "show last"
-    centerButtonsDiv.append(firstButton, lastButton)
-    controllersDiv.append(leftButton, centerButtonsDiv, rightButton)
-    document.getElementById("search").before(controllersDiv)
+    // if controllers don't exist 
+    if (document.getElementById("controllers") == null) {
+        const controllersDiv = createDiv_id_content("controllers")
+        // const controllersDiv = document.getElementById("controllers");
+        const leftButton = document.createElement("button")
+        leftButton.textContent = "previous"
+        const centerButtonsDiv = document.createElement("div")
+        const rightButton = document.createElement("button")
+        rightButton.textContent = "next"
+        const firstButton = document.createElement("button")
+        firstButton.id = "firstButton"
+        firstButton.textContent = "show first"
+        const lastButton = document.createElement("button")
+        lastButton.id = "lastButton"
+        lastButton.textContent = "show last"
+        centerButtonsDiv.append(firstButton, lastButton)
+        controllersDiv.append(leftButton, centerButtonsDiv, rightButton)
+        document.getElementById("search").before(controllersDiv)
 
-    // eventhandling
-    leftButton.addEventListener("click", () => {
-        if (current_cv > 0) {
-            current_cv--;
+        // eventhandling
+        leftButton.addEventListener("click", () => {
+            if (current_cv > 0) {
+                current_cv--;
+                clean();
+                displayCV(database[current_cv])
+            }
+        })
+
+        rightButton.addEventListener("click", () => {
+            if (current_cv < (database.length - 1)) {
+                current_cv++;
+                clean();
+                displayCV(database[current_cv])
+            }
+        })
+
+        firstButton.addEventListener("click", () => {
+            current_cv = 0;
             clean();
             displayCV(database[current_cv])
-        }
-    })
+        })
 
-    rightButton.addEventListener("click", () => {
-        if (current_cv < (database.length - 1)) {
-            current_cv++;
+        lastButton.addEventListener("click", () => {
+            current_cv = database.length - 1;
             clean();
             displayCV(database[current_cv])
-        }
-    })
-
-    firstButton.addEventListener("click", () => {
-        current_cv = 0;
-        clean();
-        displayCV(database[current_cv])
-    })
-
-    lastButton.addEventListener("click", () => {
-        current_cv = database.length - 1;
-        clean();
-        displayCV(database[current_cv])
-    })
+        })
+    }
 }
 
 function displayAll() {
