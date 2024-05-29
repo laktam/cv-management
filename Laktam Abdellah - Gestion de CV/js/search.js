@@ -5,7 +5,7 @@ for (let cv of database) {
 
 // search keywords individually if they all exist in the cv display it
 function search() {
-    clean();
+    deleteCVs();
     deleteOldSearchResults();
     const input = document.getElementById("searchInput")
     if (input.value != "") {
@@ -80,7 +80,7 @@ function displayResults(results) {
         div.innerHTML = s
         div.className = "search_result"
         div.onclick = () => {
-            clean()
+            deleteCVs()
             // deleteOldSearchResults()
             displayCV(database[result])
         }

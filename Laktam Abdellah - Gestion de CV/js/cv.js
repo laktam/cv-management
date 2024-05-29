@@ -10,14 +10,14 @@ let current_cv = 0;
 // function changeCV(event) {
 //     if (event.keyCode == 39 && current_cv < (database.length - 1)) {
 //         current_cv++;
-//         clean();
+//         deleteCVs();
 //         displayCV(database[current_cv])
 //     } else if (event.keyCode == 37 && current_cv > 0) {
 //         current_cv--;
-//         clean();
+//         deleteCVs();
 //         displayCV(database[current_cv])
 //     } else if (event.keyCode == 38) {
-//         clean();
+//         deleteCVs();
 //         current_cv = -1;
 //     }
 // }
@@ -44,7 +44,7 @@ function onDisplayTypeChange() {
         displayAll()
         clearControllers()
     } else { // show one by one
-        clean()
+        deleteCVs()
         displayCV(database[current_cv])
         addControllers()
     }
@@ -79,7 +79,7 @@ function addControllers() {
         leftButton.addEventListener("click", () => {
             if (current_cv > 0) {
                 current_cv--;
-                clean();
+                deleteCVs();
                 displayCV(database[current_cv])
             }
         })
@@ -87,27 +87,27 @@ function addControllers() {
         rightButton.addEventListener("click", () => {
             if (current_cv < (database.length - 1)) {
                 current_cv++;
-                clean();
+                deleteCVs();
                 displayCV(database[current_cv])
             }
         })
 
         firstButton.addEventListener("click", () => {
             current_cv = 0;
-            clean();
+            deleteCVs();
             displayCV(database[current_cv])
         })
 
         lastButton.addEventListener("click", () => {
             current_cv = database.length - 1;
-            clean();
+            deleteCVs();
             displayCV(database[current_cv])
         })
     }
 }
 
 function displayAll() {
-    clean()
+    deleteCVs()
     for (let cv of database) {
         displayCV(cv)
     }
@@ -120,7 +120,7 @@ function displayCV(cv) {
     createContent(cv.profile.professionalSummary, cv.education, cv.technologySkills, cv.experiences, container)
 }
 
-function clean() {
+function deleteCVs() {
     const containers = document.querySelectorAll(".container")
     for (let container of containers) {
         container.remove()

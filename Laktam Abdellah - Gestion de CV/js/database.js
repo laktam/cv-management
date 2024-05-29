@@ -1,3 +1,4 @@
+// contains the database and the cv data placeholder for cv creation
 const database = [
     {
         profile: {
@@ -891,3 +892,29 @@ const database = [
 
 
 ]
+
+
+const cv = {
+    profile: {
+        photo: "",
+        firstName: "",
+        lastName: "",
+        birthday: {
+            day: 0,
+            month: 0,
+            year: 0
+        },
+        phone: "",
+        email: "",
+        address: "",
+        professionalSummary: ``
+        ,
+        links: [],
+    },
+    education: [],
+    technologySkills: [],
+    experiences: [],
+    softSkills: [],
+    languages: [],
+    interests: []
+}
