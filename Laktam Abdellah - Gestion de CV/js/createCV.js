@@ -11,9 +11,10 @@ function createCV() {
 
     const root = createDiv_id_content('create_cv')
 
-    const education = addEducationDiv();
-    const experience = addExperiencesDiv();
-    root.append(education, experience);
+    const education = createEducationDiv();
+    const technologySkills = createTechnologySkillsDiv();
+    const experience = createExperiencesDiv();
+    root.append(education, technologySkills, experience);
 
 
     document.body.appendChild(root)
@@ -21,7 +22,7 @@ function createCV() {
 
 }
 
-function addEducationDiv() {
+function createEducationDiv() {
     //educations
     const educationsDiv = createDiv_id_content('create_cv_educations')
     const educations_title = document.createElement('h2')
@@ -33,24 +34,49 @@ function addEducationDiv() {
     const organisationInput = createLabeledInput('organisation', 'organisation')
     const yearInput = createLabeledInput('year', 'diploma_year')
     const button = document.createElement('button')
-    button.innerText = 'Add education'
+    button.innerText = 'ajouter education'
     button.addEventListener('click', addEducation)
 
     educationsDiv.append(diplomaInput, organisationInput, yearInput, button)
     return educationsDiv
 }
 
-function addExperiencesDiv() {
+function createTechnologySkillsDiv() {
+    const technologySkillsDiv = createDiv_id_content('create_cv_technologySkills');
+    const technologySkills_title = document.createElement('h2');
+    technologySkills_title.innerText = 'Competences';
+    technologySkills_title.id = 'technologySkills_title';
+    technologySkillsDiv.appendChild(technologySkills_title);
+    // technologies form
+    const skill = createLabeledInput('skill', 'skill')
+    const details = createLabeledTextArea('details', 'details'); // they should be entred separated by ,
+    const button = document.createElement('button')
+    button.innerText = 'ajouter Competence'
+    button.addEventListener('click', addTechnologySkill)
+    technologySkillsDiv.append(skill, details, button)
+    return technologySkillsDiv
+}
+
+function createExperiencesDiv() {
     // experiences
-    const experiences = createDiv_id_content('create_cv_experiences')
+    const experiencesDiv = createDiv_id_content('create_cv_experiences')
     const experiences_title = document.createElement('h2')
     experiences_title.textContent = 'Experience'
     experiences_title.id = 'experiences_title'
-    experiences.appendChild(experiences_title)
+    experiencesDiv.appendChild(experiences_title)
+    // experiences form
+    const type = createLabeledInput('type', 'type')
+    const organisation = createLabeledInput('organisation', 'organisation')
+    const title = createLabeledInput('title', 'title')
+    const technologies = createLabeledTextArea('technologies', 'technologies'); // they should be entred separated by ,
+    const year = createLabeledInput('year', 'year')
+    const duration = createLabeledInput('duration', 'duration')
+    const button = document.createElement('button')
+    button.innerText = 'ajouter experience'
+    button.addEventListener('click', addExperience)
 
-
-    return experiences
-
+    experiencesDiv.append(type, organisation, title, technologies, year, duration, button);
+    return experiencesDiv
 }
 
 function addProfileForm() {
@@ -58,7 +84,6 @@ function addProfileForm() {
 }
 
 function addEducation() {
-
     // add education to cv object
     const diploma = document.getElementById('diploma').value
     const organisation = document.getElementById('organisation').value
@@ -87,11 +112,51 @@ function addEducation() {
     document.getElementById('diploma_year').value = '';
 }
 
+function addTechnologySkill() {
+    // add education to cv object
+    const skill = document.getElementById('skill').value
+    const details = document.getElementById('details').value
+    // create details array
+    let detailsList = details.split(',')
+    detailsList = detailsList.map(item => item.trim())
+
+    cv.technologySkills.push({
+        skill,
+        details: detailsList
+    })
+
+    // display added skill
+    const added_skill = document.createElement('div')
+    added_skill.innerHTML = `
+    <div>${skill}</div>
+    <div>${details}</div>
+    <br>
+`
+    // document.getElementById('create_cv_educations').appendChild(added_education)
+    document.getElementById('technologySkills_title').after(added_skill)
+    console.log(cv)
+
+    // reset input
+    document.getElementById('skill').value = '';
+    document.getElementById('details').value = '';
+}
+
+
 function createLabeledInput(label_text, input_id) {
     const div = document.createElement('div');
     const label = document.createElement('label');
     label.innerText = label_text;
     const input = document.createElement('input');
+    input.id = input_id;
+    div.append(label, input);
+    return div
+}
+
+function createLabeledTextArea(label_text, input_id) {
+    const div = document.createElement('div');
+    const label = document.createElement('label');
+    label.innerText = label_text;
+    const input = document.createElement('textarea');
     input.id = input_id;
     div.append(label, input);
     return div

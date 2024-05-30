@@ -889,8 +889,6 @@ const database = [
         ],
         interests: ["Jeux d'échecs", "Jeux vidéo", "Formula 1", "Volleyball"]
     }
-
-
 ]
 
 
