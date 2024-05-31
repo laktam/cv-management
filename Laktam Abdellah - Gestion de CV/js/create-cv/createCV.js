@@ -12,7 +12,10 @@ function createCV() {
     const education = createEducationDiv();
     const technologySkills = createTechnologySkillsDiv();
     const experience = createExperiencesDiv();
-    root.append(profile, education, technologySkills, experience);
+    const languages = createLanguagesDiv();
+    const interests = createInterestsDiv();
+    const softSkills = createSoftSkillsDiv();
+    root.append(profile, languages, interests, softSkills, education, technologySkills, experience);
 
     document.body.appendChild(root)
     // add save button
