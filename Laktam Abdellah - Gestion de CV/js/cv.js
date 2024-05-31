@@ -36,7 +36,8 @@ function main() {
 }
 
 function onDisplayTypeChange() {
-    deleteOldSearchResults()
+    deleteOldSearchResults();
+    deleteCreateCVDiv();
     const selectCV = document.getElementById("selectCV")
     const options = selectCV.options
     console.log(options.selectedIndex)
@@ -227,12 +228,16 @@ function createContent(professionalSummary, education, technologySkills, experie
     const projectsTitleDiv = createDiv_class_content("sub_title", "Projets")
     projectsDiv.appendChild(projectsTitleDiv)
     for (let experience of experiences) {
-        if (experience.type == "Stage") {
-            const experienceDiv = createExperience(experience)
-            projectsDiv.before(experienceDiv)
-        } else if (experience.type == "Projet") {
+        // if (experience.type == "Stage" || experience.type == "stage") {
+        //     const experienceDiv = createExperience(experience)
+        //     projectsDiv.before(experienceDiv)
+        // } else
+        if (experience.type == "Projet" || experience.type == "projet") {
             const projectDiv = createPorject(experience)
             projectsDiv.appendChild(projectDiv)
+        } else {
+            const experienceDiv = createExperience(experience)
+            projectsDiv.before(experienceDiv)
         }
     }
 }

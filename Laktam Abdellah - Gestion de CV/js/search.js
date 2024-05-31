@@ -7,6 +7,7 @@ for (let cv of database) {
 function search() {
     deleteCVs();
     deleteOldSearchResults();
+    deleteCreateCVDiv();
     const input = document.getElementById("searchInput")
     if (input.value != "") {
 

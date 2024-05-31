@@ -1,27 +1,40 @@
 
 
 function createCV() {
-    // cleaning page
-    deleteCVs();
-    deleteOldSearchResults();
-    document.getElementById("searchInput").value = '';
+    if (document.getElementById('create_cv') == null) {
+        // cleaning page
+        deleteCVs();
+        deleteOldSearchResults();
+        document.getElementById("searchInput").value = '';
 
-    //
-    const root = createDiv_id_content('create_cv')
-    const profile = createProfileDiv()
-    const education = createEducationDiv();
-    const technologySkills = createTechnologySkillsDiv();
-    const experience = createExperiencesDiv();
-    const languages = createLanguagesDiv();
-    const interests = createInterestsDiv();
-    const softSkills = createSoftSkillsDiv();
-    root.append(profile, languages, interests, softSkills, education, technologySkills, experience);
+        //
+        const root = createDiv_id_content('create_cv')
+        const profile = createProfileDiv()
+        const education = createEducationDiv();
+        const technologySkills = createTechnologySkillsDiv();
+        const experience = createExperiencesDiv();
+        const languages = createLanguagesDiv();
+        const interests = createInterestsDiv();
+        const softSkills = createSoftSkillsDiv();
 
-    document.body.appendChild(root)
-    // add save button
-
+        const saveButton = document.createElement('button')
+        saveButton.id = 'saveButton'
+        saveButton.innerText = "Save"
+        saveButton.addEventListener('click', saveCV);
+        root.append(profile, languages, interests, softSkills, education, technologySkills, experience, saveButton);
+        document.body.appendChild(root)
+    }
 }
 
+function saveCV() {
+    database.push(cv)
+    const add_cv_div = document.getElementById('create_cv');
+    add_cv_div.remove()
+    // reset input
+    createCV();
+    // add new cv to string database
+    databaseStrings.push(JSON.stringify(cv))
+}
 
 
 
@@ -153,4 +166,10 @@ function createLabeledTextArea(label_text, input_id, placeholder) {
     input.id = input_id;
     div.append(label, input);
     return div
+}
+
+function deleteCreateCVDiv() {
+    if (document.getElementById('create_cv') != null) {
+        document.getElementById('create_cv').remove()
+    }
 }

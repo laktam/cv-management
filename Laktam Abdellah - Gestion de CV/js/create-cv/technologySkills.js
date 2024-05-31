@@ -31,7 +31,7 @@ function addTechnologySkill() {
     const added_skill = document.createElement('div')
     added_skill.innerHTML = `
     <div>${skill}</div>
-    <div>${details}</div>
+    <div>${detailsList}</div>
     <br>
 `
     // document.getElementById('create_cv_educations').appendChild(added_education)

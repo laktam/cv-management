@@ -27,6 +27,7 @@ function addExperience() {
     const title = document.getElementById('title').value
     const technologies = document.getElementById('technologies').value
     const duration = document.getElementById('duration').value
+    const year = document.getElementById('year').value
 
     // create technologies array
     let technologiesList = technologies.split(',')
@@ -37,7 +38,8 @@ function addExperience() {
         organisation,
         title,
         technologies: technologiesList,
-        duration
+        duration,
+        year
     })
 
     // display added skill
@@ -49,13 +51,14 @@ function addExperience() {
     <br>
 `
     // document.getElementById('create_cv_educations').appendChild(added_education)
-    document.getElementById('technologySkills_title').after(added_Experience)
+    document.getElementById('experiences_title').after(added_Experience)
     console.log(cv)
 
     // reset input
     document.getElementById('type').value = '';
-    document.getElementById('organisation').value = '';
+    document.getElementById('added_organisation').value = '';
     document.getElementById('title').value = '';
     document.getElementById('technologies').value = '';
+    document.getElementById('year').value = '';
     document.getElementById('duration').value = '';
 }
