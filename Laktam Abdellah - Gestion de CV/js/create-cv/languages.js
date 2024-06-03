@@ -1,6 +1,6 @@
 function createLanguagesDiv() {
     const languagesDiv = createDiv_id_content('create_cv_languages');
-    const languagesTitle = document.createElement('h2');
+    const languagesTitle = document.createElement('h3');
     languagesTitle.innerText = 'Languages';
     languagesTitle.id = 'languages_title';
     languagesDiv.appendChild(languagesTitle);
@@ -32,11 +32,7 @@ function addLanguage() {
 
     const addedLanguage = document.createElement('div');
     addedLanguage.innerHTML = `
-        <div>${language}</div>
-        <div>${level}</div>
-        <div>${certification}</div>
-        <div>${experience}</div>
-        <br>
+        <div>language: ${language}, level:${level},certification: ${certification},experience ${experience}</div>
     `;
     document.getElementById('languages_title').after(addedLanguage);
     console.log(cv)

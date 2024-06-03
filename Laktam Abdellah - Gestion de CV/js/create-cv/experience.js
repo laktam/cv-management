@@ -1,7 +1,7 @@
 function createExperiencesDiv() {
     // experiences
     const experiencesDiv = createDiv_id_content('create_cv_experiences')
-    const experiences_title = document.createElement('h2')
+    const experiences_title = document.createElement('h3')
     experiences_title.textContent = 'Experience'
     experiences_title.id = 'experiences_title'
     experiencesDiv.appendChild(experiences_title)
@@ -48,7 +48,6 @@ function addExperience() {
     <div>${type} a ${organisation} (${duration}, ${year})</div>
     <div>${title}</div>
     <div>${technologiesList}</div>
-    <br>
 `
     // document.getElementById('create_cv_educations').appendChild(added_education)
     document.getElementById('experiences_title').after(added_Experience)

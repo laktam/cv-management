@@ -1,7 +1,7 @@
 function createEducationDiv() {
     //educations
     const educationsDiv = createDiv_id_content('create_cv_educations')
-    const educations_title = document.createElement('h2')
+    const educations_title = document.createElement('h3')
     educations_title.textContent = 'Education (add from old to new)'         //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! hint
     educations_title.id = 'educations_title'
     educationsDiv.appendChild(educations_title)
@@ -34,7 +34,6 @@ function addEducation() {
     <div>${diploma}</div>
     <div>${organisation}</div>
     <div>${year}</div>
-    <br>
     `
     // document.getElementById('create_cv_educations').appendChild(added_education)
     document.getElementById('educations_title').after(added_education)

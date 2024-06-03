@@ -1,6 +1,6 @@
 function createInterestsDiv() {
     const interestsDiv = createDiv_id_content('create_cv_interests');
-    const interestsTitle = document.createElement('h2');
+    const interestsTitle = document.createElement('h3');
     interestsTitle.innerText = 'Interests';
     interestsTitle.id = 'interests_title';
     interestsDiv.appendChild(interestsTitle);
@@ -24,7 +24,6 @@ function addInterests() {
     const added_Interests = document.createElement('div');
     added_Interests.innerHTML = `
         <div>${interests}</div>
-        <br>
     `;
     document.getElementById('interests_title').after(added_Interests);
     console.log(cv)

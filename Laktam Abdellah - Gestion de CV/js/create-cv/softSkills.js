@@ -1,6 +1,6 @@
 function createSoftSkillsDiv() {
     const softSkillsDiv = createDiv_id_content('create_cv_softSkills');
-    const softSkillsTitle = document.createElement('h2');
+    const softSkillsTitle = document.createElement('h3');
     softSkillsTitle.innerText = 'Soft Skills';
     softSkillsTitle.id = 'softSkills_title';
     softSkillsDiv.appendChild(softSkillsTitle);
@@ -24,7 +24,6 @@ function addSoftSkills() {
     const added_SoftSkills = document.createElement('div');
     added_SoftSkills.innerHTML = `
         <div>${softSkills}</div>
-        <br>
     `;
     document.getElementById('softSkills_title').after(added_SoftSkills);
     console.log(cv)

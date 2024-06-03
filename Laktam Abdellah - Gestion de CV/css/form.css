@@ -1,0 +1,84 @@
+#create_cv {
+    max-width: 700px;
+    margin: auto;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* div {
+    margin-bottom: 15px;
+} */
+
+#create_cv>label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input,
+textarea,
+button {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input,
+textarea {
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* #create_cv_profile,
+#create_cv_languages,
+#create_cv_interests,
+#create_cv_softSkills,
+#create_cv_educations,
+#create_cv_technologySkills,
+#create_cv_experiences {
+    margin-bottom: 30px;
+} */
+
+#create_cv>div>div>input {
+    background-color: #ecf0f1;
+}
+
+#create_cv>div>div>textarea {
+    background-color: #ecf0f1;
+}
+
+#create_cv>div>div {
+    margin: 10px;
+}
+
+#saveButton {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 17px;
+}

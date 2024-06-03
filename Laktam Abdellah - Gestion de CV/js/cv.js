@@ -63,17 +63,18 @@ function addControllers() {
         // const controllersDiv = document.getElementById("controllers");
         const leftButton = document.createElement("button")
         leftButton.textContent = "previous"
-        const centerButtonsDiv = document.createElement("div")
+        // const centerButtonsDiv = document.createElement("div")
         const rightButton = document.createElement("button")
         rightButton.textContent = "next"
         const firstButton = document.createElement("button")
-        firstButton.id = "firstButton"
+        // firstButton.id = "firstButton"
         firstButton.textContent = "show first"
         const lastButton = document.createElement("button")
-        lastButton.id = "lastButton"
+        // lastButton.id = "lastButton"
         lastButton.textContent = "show last"
-        centerButtonsDiv.append(firstButton, lastButton)
-        controllersDiv.append(leftButton, centerButtonsDiv, rightButton)
+        // centerButtonsDiv.append(firstButton, lastButton)
+        // controllersDiv.append(leftButton, centerButtonsDiv, rightButton)
+        controllersDiv.append(leftButton, firstButton, lastButton, rightButton)
         document.getElementById("search").before(controllersDiv)
 
         // eventhandling
@@ -81,6 +82,7 @@ function addControllers() {
             if (current_cv > 0) {
                 current_cv--;
                 deleteCVs();
+                deleteCreateCVDiv();
                 displayCV(database[current_cv])
             }
         })
@@ -89,6 +91,7 @@ function addControllers() {
             if (current_cv < (database.length - 1)) {
                 current_cv++;
                 deleteCVs();
+                deleteCreateCVDiv();
                 displayCV(database[current_cv])
             }
         })
@@ -96,12 +99,14 @@ function addControllers() {
         firstButton.addEventListener("click", () => {
             current_cv = 0;
             deleteCVs();
+            deleteCreateCVDiv();
             displayCV(database[current_cv])
         })
 
         lastButton.addEventListener("click", () => {
             current_cv = database.length - 1;
             deleteCVs();
+            deleteCreateCVDiv();
             displayCV(database[current_cv])
         })
     }

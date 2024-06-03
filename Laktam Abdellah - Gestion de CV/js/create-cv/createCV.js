@@ -27,6 +27,8 @@ function createCV() {
 }
 
 function saveCV() {
+    //add profile info to cv object
+    addProfile()
     database.push(cv)
     const add_cv_div = document.getElementById('create_cv');
     add_cv_div.remove()
@@ -43,7 +45,7 @@ function saveCV() {
 
 function createProfileDiv() {
     const profileDiv = createDiv_id_content('create_cv_profile');
-    const profile_title = document.createElement('h2');
+    const profile_title = document.createElement('h3');
     profile_title.innerText = 'Profile';
     profile_title.id = 'profile_title';
     profileDiv.appendChild(profile_title);
@@ -54,13 +56,13 @@ function createProfileDiv() {
     const phone = createLabeledInput('phone', 'phone')
     const email = createLabeledInput('email', 'email')
     const address = createLabeledInput('address', 'address')
-    const professionalSummary = createLabeledTextArea('professional summary', 'professionalSummary')
+    const professionalSummary = createLabeledTextArea('professional summary', 'professionalSummaryTA')
     const links = createLabeledTextArea('links', 'links', 'separaged by ","')
-    const button = document.createElement('button')
-    button.id = "profile_button"
-    button.innerText = 'save profile info'
-    button.addEventListener('click', addProfile)
-    profileDiv.append(nom, prenom, birthday, phone, email, address, professionalSummary, links, button)
+    // const button = document.createElement('button')
+    // button.id = "profile_button"
+    // button.innerText = 'save profile info'
+    // button.addEventListener('click', addProfile)
+    profileDiv.append(nom, prenom, birthday, phone, email, address, professionalSummary, links)
     return profileDiv
 }
 
@@ -79,7 +81,7 @@ function addProfile() {
     const phone = document.getElementById('phone').value
     const email = document.getElementById('email').value
     const address = document.getElementById('address').value
-    const professionalSummary = document.getElementById('professionalSummary').value
+    const professionalSummary = document.getElementById('professionalSummaryTA').value
     const links = document.getElementById('links').value
     let linksList = links.split(",");
 
@@ -111,7 +113,6 @@ function addProfile() {
 <div>${address}</div>
 <div>${professionalSummary}</div>
 <div>${links}</div>
-<br>
 `
     // document.getElementById('create_cv_educations').appendChild(added_education)
     document.getElementById('profile_title').after(profile_text)
@@ -124,15 +125,14 @@ function addProfile() {
     document.getElementById('phone').remove()
     document.getElementById('email').remove()
     document.getElementById('address').remove()
-    document.getElementById('professionalSummary').remove()
+    document.getElementById('professionalSummaryTA').remove()
     document.getElementById('links').remove()
     const labels = document.getElementById('create_cv_profile').querySelectorAll('label')
     for (let label of labels) {
         label.remove()
     }
 
-    //delete profile button
-    document.getElementById("profile_button").remove()
+    // document.getElementById("profile_button").remove()
 }
 
 
@@ -152,6 +152,9 @@ function createLabeledInput(label_text, input_id, placeholder) {
 
     input.id = input_id;
     div.append(label, input);
+
+    // style
+
     return div
 }
 
@@ -165,6 +168,10 @@ function createLabeledTextArea(label_text, input_id, placeholder) {
     }
     input.id = input_id;
     div.append(label, input);
+
+    // align label and text area
+    div.style.display = 'flex'
+    div.style.alignItems = 'flex-start'
     return div
 }
 

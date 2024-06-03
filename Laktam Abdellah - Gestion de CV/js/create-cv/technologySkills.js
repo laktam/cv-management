@@ -1,6 +1,6 @@
 function createTechnologySkillsDiv() {
     const technologySkillsDiv = createDiv_id_content('create_cv_technologySkills');
-    const technologySkills_title = document.createElement('h2');
+    const technologySkills_title = document.createElement('h3');
     technologySkills_title.innerText = 'Competences';
     technologySkills_title.id = 'technologySkills_title';
     technologySkillsDiv.appendChild(technologySkills_title);
@@ -32,8 +32,7 @@ function addTechnologySkill() {
     added_skill.innerHTML = `
     <div>${skill}</div>
     <div>${detailsList}</div>
-    <br>
-`
+    `
     // document.getElementById('create_cv_educations').appendChild(added_education)
     document.getElementById('technologySkills_title').after(added_skill)
     console.log(cv)
