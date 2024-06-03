@@ -1171,7 +1171,7 @@ const database = [
             {
                 diploma: "Master MQL",
                 organisation: "FSDM - Université Sidi Mohammed ben Abdellah - Fès",
-                year: 2023 - 2025
+                year: "2023 - 2025"
             },
             {
                 diploma: "Licence fondamentale en Science Mathématique et Informatique (SMI)",
@@ -2988,6 +2988,126 @@ const database = [
             },
         ],
         interests: ["Football", , "Tennis", "Jeux vidéo", "Jeux d'échecs", "Voyages"],
+    },
+    {
+        profile: {
+            photo: "resources/Sohaila.png",
+            firstName: "Sohayla",
+            lastName: "GHANDOR",
+            birthday: {
+                day: 24,
+                month: 12,
+                year: 2002
+            },
+            phone: "0655913727",
+            email: "ghandorsouhaila@gmail.com",
+            address: "BAB ANDALOUS FES",
+            professionalSummary: `Développeuse de logiciels doté d'une vaste expérience dans les architectures logicielles et les technologies émergentes telles que Jakarta EE, React et Angular. Habitué à diriger des projets agiles, je suis compétent dans la planification, l'exécution et la coordination des tâches au sein d'une équipes.`,
+            links: [
+                "https://www.linkedin.com/in/souhayla-ghandor-09a521264/",
+                "https://github.com/JasmineGHR"
+            ]
+        },
+        education: [
+            {
+                diploma: "Master Qualité du Logiciel",
+                organisation: "FSDM - Université Sidi Mohammed ben Abdellah - Fès",
+                year: 2025,
+
+            },
+            {
+                diploma: "Licence en Génie Informatique",
+                organisation: "FST - Université Sidi Mohammed ben Abdellah - Fès",
+                year: 2023,
+
+            },
+            {
+                diploma: "Baccalauréat",
+                organisation: "Lycée Ibn Al Haitam de Fès",
+                year: "2019-2020",
+                details: {
+                    field: "Baccalauréat Science Mathématique B",
+                    mention: "bien"
+                }
+            }
+
+
+        ],
+        technologySkills: [
+            {
+                skill: "Jakarta Entreprise Edition (JEE)",
+                details: [
+                    "Modèle MVC2", "Servlets et JSP", "Modèle DAO", "JPA", "Administration Tomcat"
+                ]
+            },
+            {
+                skill: "Ingénierie du Web",
+                details: ["HTML", "CSS", "JavaScript", "Node.js", "React", "Angular"]
+            },
+            {
+                skill: "Ingénierie DevOps",
+                details: ["Maven", "Git", "GitHub", "GitLab", "JUnit"]
+            },
+            {
+                skill: "Technologie XML",
+                details: [
+                    "Standard XML", "Bases de données XML", "Parseurs XML (DOM, SAX)", "DTD", "XSD (XML Schema)", "XSLT", "XPath", "XQuery"
+                ]
+            },
+            {
+                skill: "Gestion des Bases de Données",
+                details: ["MySQL", "Oracle"]
+            },
+            {
+                skill: "Gestion de projet",
+                details: ["Compétences solides en gestion de projet"]
+            }
+        ],
+        experiences: [
+            {
+                type: "Stage",
+                organisation: "J2HB",
+                title: "Stage de PFE de la Licence",
+                technologies: ["Laravel", "Docker", "React"],
+                year: 2023,
+                duration: "2 mois",
+            },
+            {
+                type: "Projet",
+                organisation: "FSDM",
+                title: "Application de gestion des CVs",
+                technologies: ["JavaScript", "CSS", "HTML"],
+                year: 2023,
+                duration: "1 mois",
+            },
+            {
+                type: "Projet",
+                organisation: "Université",
+                title: "Générateur des diagrammes UML",
+                technologies: ["Java"],
+                year: 2023,
+                duration: "1 mois",
+            }
+        ],
+        softSkills: [
+            "Communication", "travail d'équipe", "résolution des problèmes", "Gestion du temps", "rigoureuse", "adaptabilité"
+        ],
+        languages: [
+            {
+                language: "Arabe",
+                level: "Native",
+
+            },
+            {
+                language: "Français",
+                level: "Avancée",
+            },
+            {
+                language: "Anglais",
+                level: "Avancée",
+            }
+        ],
+        interests: "voyage"
     }
 
 ]
